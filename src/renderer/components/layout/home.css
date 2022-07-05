@@ -1,0 +1,49 @@
+.appSidebarWrapper {
+  /* background-color: #04d504; */
+  background-color: #ffffff;
+  height: 100vh;
+}
+
+.appSidebar > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.appSidebar > ul > li > a {
+  padding: 10px 15px;
+  color: #04d504;
+  /* font-weight: bold; */
+  font-size: 0.7rem;
+  display: block;
+  border-bottom: 1px solid #2e2e2e12;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+.top-nav-bar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #04d504; */
+  color: #333;
+  padding: 0 15px;
+  font-weight: bold;
+  /* box-shadow: 2px 2px 2px #ddd; */
+}
+.topLogo {
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-bottom: 1px solid #2e2e2e12; */
+}
+.contentWrapper {
+  padding: 0 15px;
+}
+.navBarFirstItem {
+  margin-top: 0px !important;
+}

@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+const Database = require('./database');
 
 export default class AppUpdater {
   constructor() {
@@ -92,6 +93,8 @@ const createWindow = async () => {
     } else {
       mainWindow.show();
     }
+
+    initDatabaseApi();
   });
 
   mainWindow.on('closed', () => {
@@ -124,6 +127,67 @@ app.on('window-all-closed', () => {
   }
 });
 
+// Group all database api call
+
+function initDatabaseApi() {
+  /*
+    Function for check if user exists or not in database.
+    call this function at the time of frontend loading
+  */
+
+  ipcMain.handle('get-users', async (event, args) => {
+    let response = await Database.getUsers();
+    return response;
+  });
+
+  ipcMain.handle('user-register', async (event, args) => {
+    return await Database.userRegister(args);
+  });
+
+  ipcMain.handle('check-user-exists', async (event, args) => {
+    let response = await Database.checkUserExists(args);
+    return response;
+  });
+
+  ipcMain.handle('get-profile-info', async (event, args) => {
+    let response = await Database.getProfile();
+    console.log(response);
+  });
+
+  /* Recipe apis call */
+  ipcMain.handle('save-recipe', async (event, args) => {
+    return await Database.saveRecipe(args);
+  });
+  
+  ipcMain.handle('update-recipe', async (event, args) => {
+    return await Database.updateRecipe(args);
+  });
+  
+  ipcMain.handle('get-all-recipe', async (event, args) => {
+    return await Database.getAllRecipe(args);
+  });
+
+  ipcMain.handle('is-recipe-exists', async (event, args) => {
+    return await Database.isRecipeExists(args);
+  });
+  ipcMain.handle('remove-recipe', async (event, args) => {
+    return await Database.removeRecipe(args);
+  });
+
+  /* Order apis call */
+  ipcMain.handle('save-order', async (event, args) => {
+    return await Database.saveOrder(args);
+  });
+  
+  ipcMain.handle('update-order', async (event, args) => {
+    return await Database.updateOrder(args);
+  });
+  
+  ipcMain.handle('get-all-order', async (event, args) => {
+    return await Database.getAllOrder(args);
+  });
+  
+}
 app
   .whenReady()
   .then(() => {

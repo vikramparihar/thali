@@ -1,0 +1,19 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+}
+.login-box {
+  height: 250px;
+  width: 35%;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ant-form-item {
+  margin-bottom: 15px !important;
+}
+.login-form-register-link {
+  float: right;
+}

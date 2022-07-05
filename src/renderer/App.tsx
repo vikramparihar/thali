@@ -1,49 +1,32 @@
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
+import "@fontsource/roboto";
 import './App.css';
+import Login from './components/login';
+import Register from './components/register';
+import Layout from './components/layout';
+import Dashboard from './components/dashboard';
+import Order from './components/order';
+import Invoice from './components/invoice';
+import Setting from './components/setting';
+import Recipe from './components/recipe';
 
-const Hello = () => {
-  return (
-    <div>
-      <div className="Hello">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
-  );
-};
 
 export default function App() {
+
+  
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Layout />}>
+          <Route path="dashboard" element={<Dashboard />}/>
+          <Route path="order" element={<Order />}/>
+          <Route path="invoice" element={<Invoice />}/>
+          <Route path="recipe" element={<Recipe />}/>
+          <Route path="setting" element={<Setting />}/>
+        
+        </Route>
       </Routes>
     </Router>
   );

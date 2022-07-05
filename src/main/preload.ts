@@ -19,3 +19,24 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
 });
+
+contextBridge.exposeInMainWorld('databaseAPI', {
+  // Invoke Methods
+  getUsers: () => ipcRenderer.invoke('get-users'),
+  userRegister: (args: any) => ipcRenderer.invoke('user-register', args),
+  checkUserExists: (args: any) => ipcRenderer.invoke('check-user-exists', args),
+
+  // Recipe apis call
+  saveRecipe: (args: any) => ipcRenderer.invoke('save-recipe', args),
+  updateRecipe: (args: any) => ipcRenderer.invoke('update-recipe', args),
+  isRecipeExists: (args: any) => ipcRenderer.invoke('is-recipe-exists', args),
+  getAllRecipe: (args: any) => ipcRenderer.invoke('get-all-recipe', args),
+  removeRecipe: (args: any) => ipcRenderer.invoke('remove-recipe', args),
+
+  // Order apis call
+  saveOrder: (args: any) => ipcRenderer.invoke('save-order', args),
+  updateOrder: (args: any) => ipcRenderer.invoke('update-order', args),
+  getAllOrder: (args: any) => ipcRenderer.invoke('get-all-order', args),
+
+  getProfileInfo: (args: any) => ipcRenderer.invoke('get-profile-info', args),
+});

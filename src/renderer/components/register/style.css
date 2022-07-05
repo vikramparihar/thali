@@ -1,0 +1,16 @@
+.register-page {
+  display: flex;
+  height: 100vh;
+}
+.register-box {
+  width: 35%;
+  height: 350px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ant-alert-message {
+  font-size: 12px;
+}

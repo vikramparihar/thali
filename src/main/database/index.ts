@@ -60,8 +60,9 @@ class Database {
   async saveOrder(args: any) {
     return await OrderController.saveOrder(args);
   }
+  
 
-  async updategetAllOrder(args: any) {
+  async updateOrder(args: any) {
     return await OrderController.updateOrder(args);
   }
 

@@ -55,7 +55,8 @@ export default function edit(props: any) {
   }
   const onFinish = async (values: any) => {
     if (typeof values.items != 'undefined') {
-      let response = await window.databaseAPI.saveOrder(values);
+      values['id'] = orderID  
+      let response = await window.databaseAPI.updateOrder(values);
       if (response.status == 'ok') {
         message.success('Order created successfully');
         form.resetFields();

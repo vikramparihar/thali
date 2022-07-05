@@ -1,4 +1,5 @@
 const connection = require('../dbConnection');
+
 const UserSchema = connection.getModels().UserSchema;
 
 class UserController {

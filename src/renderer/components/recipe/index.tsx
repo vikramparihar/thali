@@ -25,7 +25,8 @@ export default function recipe() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
   const [timestamp, setTimestamp] = useState(+new Date());
-  const previousTimestamp = useRef();
+  // const previousTimestamp = useRef();
+  const [reset, setReset] = useState(true);
 
   const onChange = (key: string) => {
     setTimestamp(+new Date());
@@ -33,10 +34,12 @@ export default function recipe() {
   };
   const handleOk = () => {
     setIsModalVisible(false);
+    setTimestamp(+new Date());
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    setTimestamp(+new Date());
   };
   const onFinish = async (values: any) => {
     try {
@@ -46,8 +49,9 @@ export default function recipe() {
         if (response.status == 'ok') {
           message.success('Recipe added successfully');
           form.resetFields();
-          setTimestamp(+new Date());
           setIsModalVisible(false);
+          setReset(false)
+          setReset(true)
         } else {
           message.error('Sorry unable to added recipe');
         }
@@ -64,13 +68,9 @@ export default function recipe() {
     console.log('Failed:', errorInfo);
   };
 
-  const getList = () => {
-    return (<List/>)
-  }
-
   useEffect(() => {
-    previousTimestamp.current = timestamp;
-  }, [timestamp]);
+    setReset(true)
+  }, [reset]);
   return (
     <>
       <PageHeader
@@ -83,17 +83,17 @@ export default function recipe() {
             key="1"
             icon={<PlusCircleOutlined />}
             onClick={() => {
-              setIsModalVisible(true);
+              setIsModalVisible(true); setTimestamp(+new Date());
             }}
           >
             Create
           </Button>,
         ]}
       />
-      {/* Current time : {timestamp} old time: {previousTimestamp.current} */}
+      
       <Row>
         <Col span={24}>
-          { timestamp !== previousTimestamp.current ? 
+          { reset ? 
             <List timestamp={timestamp}></List> : ''
           }
         </Col>

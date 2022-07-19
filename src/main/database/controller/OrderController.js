@@ -31,10 +31,12 @@ class OrderController {
 
   async saveOrder(args) {
     try {
-      const { items } = args;
+      const { items, tableNumber, customerName } = args;
       console.log(items);
       console.log(connection.getModels());
       let order = await OrderSchema.create({
+        tableNumber: tableNumber,
+        customerName: customerName,
         items: JSON.stringify(items),
       });
       return { status: 'ok', order: order };
@@ -47,8 +49,6 @@ class OrderController {
   async updateOrder(args) {
     try {
       const { items, id } = args;
-      console.log(id);
-      console.log(items);
       let order = await OrderSchema.upsert({
         id: id,
         items: JSON.stringify(items),

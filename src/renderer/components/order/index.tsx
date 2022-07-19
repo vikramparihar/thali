@@ -46,6 +46,7 @@ export default function order() {
   const getOrders = async () => {
     let response = await window.databaseAPI.getAllOrder();
     if (response.status == 'ok') {
+      console.log(response.result)
       setOrders(response.result);
     } else {
       message.error('Sorry! Unable to fetch Orders');
@@ -75,6 +76,18 @@ export default function order() {
       key: 'id',
       defaultSortOrder: 'ascend',
       render: (text) => <span>ORD#{text}</span>,
+    },
+    {
+      title: 'Table Number',
+      dataIndex: 'tableNumber',
+      key: 'tableNumber',
+      render: (text) => <span>{text ? text : 'N/A'}</span>,
+    },
+    {
+      title: 'Customer',
+      dataIndex: 'customerName',
+      key: 'customerName',
+      render: (text) => <span>{text ? text : 'N/A'}</span>,
     },
     {
       title: 'Price',

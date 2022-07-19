@@ -8,7 +8,7 @@ import {
   Form,
   Input,
   Select,
-  Space,
+  Divider,
   Row,
   Col,
   InputNumber,
@@ -40,10 +40,10 @@ export default function edit(props: any) {
   const getCurrentOrder = async () => {
     let response = await window.databaseAPI.getAllOrder({ id: orderID });
     if (response.status == 'ok') {
-      //   setOrders(response.result);
-    //   console.log(JSON.parse(response.result.items))
-      let items = JSON.parse(response.result.items)
+      let items = JSON.parse(response.result.items);
       form.setFieldsValue({ items: items });
+      form.setFieldsValue({ tableNumber: response.result.tableNumber });
+      form.setFieldsValue({ customerName: response.result.customerName });
       calculateOrderTotal(items);
     } else {
       message.error('Sorry! Unable to fetch Orders');
@@ -55,7 +55,7 @@ export default function edit(props: any) {
   }
   const onFinish = async (values: any) => {
     if (typeof values.items != 'undefined') {
-      values['id'] = orderID  
+      values['id'] = orderID;
       let response = await window.databaseAPI.updateOrder(values);
       if (response.status == 'ok') {
         message.success('Order updated successfully');
@@ -112,6 +112,29 @@ export default function edit(props: any) {
       onFinish={onFinish}
       autoComplete="off"
     >
+      <Row gutter={16}>
+        <Col span={12}>
+          <Form.Item
+            label="Table Number (if any)"
+            name="tableNumber"
+            wrapperCol={{ span: 24 }}
+            labelCol={{ span: 24 }}
+          >
+            <Input placeholder="Table Number if any" />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            label="Customer Name (if any)"
+            name="customerName"
+            wrapperCol={{ span: 24 }}
+            labelCol={{ span: 24 }}
+          >
+            <Input placeholder="Customer name if any" />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Divider plain>Order Details</Divider>
       <Row gutter={16}>
         <Col span={8}>Recipe</Col>
         <Col span={4}>Price</Col>

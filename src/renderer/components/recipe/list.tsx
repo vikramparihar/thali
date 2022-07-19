@@ -161,7 +161,7 @@ export default function list(props: any) {
     <>
       <Table columns={columns} dataSource={data} size="middle" />
       <Modal
-        title="Basic Modal"
+        title="Edit"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}

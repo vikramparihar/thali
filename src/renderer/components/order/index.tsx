@@ -14,7 +14,11 @@ import {
   Popconfirm,
 } from 'antd';
 import type { ColumnsType } from 'antd/lib/table';
-import { PlusCircleOutlined } from '@ant-design/icons';
+import {
+  PlusCircleOutlined,
+  DeleteOutlined,
+  EditOutlined,
+} from '@ant-design/icons';
 import Create from './createOrder';
 import Edit from './editOrder';
 
@@ -29,7 +33,7 @@ export default function order() {
   };
 
   const showEditDrawer = (record: any) => {
-    setEditId(record.id)
+    setEditId(record.id);
     setEditvisible(true);
   };
 
@@ -52,7 +56,7 @@ export default function order() {
     let orderAmount: Number = 0;
     if (items.length) {
       for (const item of items) {
-        orderAmount += item.price;
+        orderAmount += item.total;
       }
     }
     return orderAmount;
@@ -100,15 +104,23 @@ export default function order() {
             okText="Yes"
             cancelText="No"
           >
-            <a href="#">Delete</a>
+            {/* <a href="#">Delete</a> */}
+            <Button
+              type="default"
+              size="small"
+              shape="circle"
+              icon={<DeleteOutlined />}
+            />
           </Popconfirm>
-          <a
+          <Button
             onClick={() => {
               showEditDrawer(record);
             }}
-          >
-            Edit
-          </a>
+            type="default"
+            size="small"
+            shape="circle"
+            icon={<EditOutlined />}
+          />
         </Space>
       ),
     },
@@ -116,7 +128,7 @@ export default function order() {
 
   useEffect(() => {
     getOrders();
-  }, [visible]);
+  }, [visible, editvisible]);
   return (
     <>
       <PageHeader
@@ -132,9 +144,7 @@ export default function order() {
       />
       <Row>
         <Col span={24}>
-          <Card>
-            <Table columns={columns} dataSource={orders} size="small" />
-          </Card>
+          <Table columns={columns} dataSource={orders} size="middle" />
         </Col>
       </Row>
 
@@ -155,7 +165,7 @@ export default function order() {
         visible={editvisible}
         width={768}
       >
-        <Edit id={editId}/>
+        <Edit id={editId} />
       </Drawer>
     </>
   );

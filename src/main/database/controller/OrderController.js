@@ -47,6 +47,8 @@ class OrderController {
   async updateOrder(args) {
     try {
       const { items, id } = args;
+      console.log(id);
+      console.log(items);
       let order = await OrderSchema.upsert({
         id: id,
         items: JSON.stringify(items),

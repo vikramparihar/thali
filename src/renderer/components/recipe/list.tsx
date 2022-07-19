@@ -92,7 +92,7 @@ export default function list(props: any) {
       dataIndex: 'name',
       key: 'name',
       defaultSortOrder: 'ascend',
-      render: (text) => <a className="toTitleCase">{text}</a>,
+      render: (text) => <span className="toTitleCase">{text}</span>,
     },
     {
       title: 'Price',
@@ -159,7 +159,7 @@ export default function list(props: any) {
   }, [tabindex]);
   return (
     <>
-      <Table columns={columns} dataSource={data} size="small" />
+      <Table columns={columns} dataSource={data} size="middle" />
       <Modal
         title="Basic Modal"
         visible={isModalVisible}

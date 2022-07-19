@@ -1,4 +1,6 @@
+
 import { useNavigate, Outlet, Link } from 'react-router-dom';
+import React, { useState, useId } from "react";
 import { Menu } from 'antd';
 import {
   LogoutOutlined,
@@ -18,17 +20,22 @@ import './home.css';
 export default function layout() {
   const navigation = useNavigate();
   const { Header, Footer, Sider, Content } = Layout;
+  const [current, setCurrent] = useState("dashboard");
   const logout = () => {
     navigation('/');
   };
+  const onClick = (e:any) => {
+    setCurrent(e.key);
+    navigation(e.key)
+  };
   const items = [
-    { label: 'item 1', key: 'item-1' }, // remember to pass the key prop
-    { label: 'item 2', key: 'item-2' }, // which is required
-    {
-      label: 'sub menu',
-      key: 'submenu',
-      children: [{ label: 'item 3', key: 'submenu-item-1' }],
-    },
+    { label: 'Dashboard', key: 'dashboard', icon: <HomeOutlined /> },
+    { label: 'Orders', key: 'order', icon: <UnorderedListOutlined /> }, // which is required
+    { label: 'Invoices', key: 'invoice', icon: <BarcodeOutlined /> }, // which is required
+    { label: 'Recipes', key: 'recipe', icon: <BlockOutlined /> }, // which is required
+    // { label: 'Customers', key: 'customer', icon: <UsergroupAddOutlined /> }, // which is required
+    // { label: 'Settings', key: 'setting', icon: <SettingOutlined /> }, // which is required
+    // { label: 'Profile', key: 'profile', icon: <InstagramOutlined /> }, // which is required
   ];
   return (
     <Layout>
@@ -38,65 +45,7 @@ export default function layout() {
             {' '}
             <DingdingOutlined /> Half-plate
           </div>
-          {/* <ul>
-            <li>
-              <Link to="dashboard">
-                <HomeOutlined /> Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link to="order">
-                <UnorderedListOutlined /> Orders
-              </Link>
-            </li>
-            <li>
-              <Link to="invoice">
-                <BarcodeOutlined /> Invoices
-              </Link>
-            </li>
-            <li>
-              <Link to="setting">
-              <SettingOutlined /> Settings
-              </Link>
-            </li>
-          </ul> */}
-          <Menu>
-            <Menu.Item className="navBarFirstItem" key="dashboard">
-              <Link to="dashboard">
-                <HomeOutlined /> Dashboard
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="order">
-              <Link to="order">
-                <UnorderedListOutlined /> Orders
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="invoice">
-              <Link to="invoice">
-                <BarcodeOutlined /> Invoices
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="recipe">
-              <Link to="recipe">
-                <BlockOutlined /> Recipes
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to="recipe" key="customer">
-                <UsergroupAddOutlined /> Customers
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link to="setting" key="setting">
-                <SettingOutlined /> Settings
-              </Link>
-            </Menu.Item>
-            <Menu.Item key="setting">
-              <Link to="setting">
-                <InstagramOutlined /> Profile
-              </Link>
-            </Menu.Item>
-          </Menu>
+          <Menu onClick={onClick} items={items} />
         </div>
       </Sider>
       <Layout>

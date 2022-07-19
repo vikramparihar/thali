@@ -8,7 +8,7 @@ import {
   Form,
   Input,
   Select,
-  Space,
+  Divider,
   Row,
   Col,
   InputNumber,
@@ -97,6 +97,29 @@ export default function create() {
       onFinish={onFinish}
       autoComplete="off"
     >
+      <Row gutter={16}>
+        <Col span={12}>
+          <Form.Item
+            label="Table Number (if any)"
+            name="tableNumber"
+            wrapperCol={{ span: 24 }}
+            labelCol={{ span: 24 }}
+          >
+            <Input placeholder='Table Number if any' />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item
+            label="Customer Name (if any)"
+            name="customerName"
+            wrapperCol={{ span: 24 }}
+            labelCol={{ span: 24 }}
+          >
+            <Input  placeholder='Customer name if any'/>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Divider plain>Order Details</Divider>
       <Row gutter={16}>
         <Col span={8}>Recipe</Col>
         <Col span={4}>Price</Col>

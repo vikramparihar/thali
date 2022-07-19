@@ -58,8 +58,7 @@ export default function edit(props: any) {
       values['id'] = orderID  
       let response = await window.databaseAPI.updateOrder(values);
       if (response.status == 'ok') {
-        message.success('Order created successfully');
-        form.resetFields();
+        message.success('Order updated successfully');
       } else {
         message.error('Sorry! Unable to Create Order');
       }
@@ -152,7 +151,7 @@ export default function edit(props: any) {
                         message: 'Missing price',
                       },
                     ]}
-                    initialValue="0"
+                    initialValue={0}
                   >
                     <InputNumber min={0} />
                   </Form.Item>
@@ -167,7 +166,7 @@ export default function edit(props: any) {
                         message: 'Missing price',
                       },
                     ]}
-                    initialValue="1"
+                    initialValue={1}
                   >
                     <InputNumber min={1} onChange={() => handleChange(field)} />
                   </Form.Item>
@@ -182,7 +181,7 @@ export default function edit(props: any) {
                         message: 'Missing total',
                       },
                     ]}
-                    initialValue="0"
+                    initialValue={0}
                   >
                     <InputNumber readOnly />
                   </Form.Item>
@@ -209,7 +208,7 @@ export default function edit(props: any) {
       <Form.Item>Order Total: {orderTotal}</Form.Item>
       <Form.Item>
         <Button icon={<SaveOutlined />} type="primary" htmlType="submit">
-          Save
+          Update
         </Button>
       </Form.Item>
     </Form>

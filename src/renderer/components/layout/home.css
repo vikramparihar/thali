@@ -43,7 +43,8 @@
 }
 .contentWrapper {
   padding: 0 15px;
+  /* height: 60vh; */
 }
-.navBarFirstItem {
+.appSidebar .ant-menu .ant-menu-item:first-child {
   margin-top: 0px !important;
 }

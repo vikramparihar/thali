@@ -32,6 +32,8 @@ contextBridge.exposeInMainWorld('databaseAPI', {
   isRecipeExists: (args: any) => ipcRenderer.invoke('is-recipe-exists', args),
   getAllRecipe: (args: any) => ipcRenderer.invoke('get-all-recipe', args),
   removeRecipe: (args: any) => ipcRenderer.invoke('remove-recipe', args),
+  seedRecipe: (args: any) => ipcRenderer.invoke('seed-recipe', args),
+  
 
   // Order apis call
   saveOrder: (args: any) => ipcRenderer.invoke('save-order', args),

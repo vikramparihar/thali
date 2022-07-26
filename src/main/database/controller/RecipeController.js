@@ -1,6 +1,7 @@
 const connection = require('../dbConnection');
 const RecipeSchema = connection.getModels().RecipeSchema;
 const { QueryTypes } = require('sequelize');
+const RecipeSeeds = require('../seeds/RecipeSeeds');
 
 class RecipeController {
   constructor() {}
@@ -106,6 +107,10 @@ class RecipeController {
         error: 'Sorry something went wrong',
       };
     }
+  }
+
+  async seedData() {
+    return await RecipeSeeds.invoke();
   }
 }
 

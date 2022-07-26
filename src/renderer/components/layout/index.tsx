@@ -12,6 +12,7 @@ import {
   BlockOutlined,
   UsergroupAddOutlined,
   InstagramOutlined,
+  CalendarOutlined
 } from '@ant-design/icons';
 
 import { Layout } from 'antd';
@@ -33,8 +34,8 @@ export default function layout() {
     { label: 'Orders', key: 'order', icon: <UnorderedListOutlined /> }, // which is required
     { label: 'Invoices', key: 'invoice', icon: <BarcodeOutlined /> }, // which is required
     { label: 'Recipes', key: 'recipe', icon: <BlockOutlined /> }, // which is required
-    // { label: 'Customers', key: 'customer', icon: <UsergroupAddOutlined /> }, // which is required
-    // { label: 'Settings', key: 'setting', icon: <SettingOutlined /> }, // which is required
+    { label: 'Customers', key: 'customer', icon: <UsergroupAddOutlined /> }, // which is required
+    { label: 'Calendar', key: 'calendar', icon: <CalendarOutlined /> }, // which is required
     // { label: 'Profile', key: 'profile', icon: <InstagramOutlined /> }, // which is required
   ];
   return (

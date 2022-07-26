@@ -100,6 +100,7 @@ export default function list(props: any) {
       key: 'price',
       // defaultSortOrder: 'descend',
       sorter: (a, b) => a.price - b.price,
+      render: (text) => <span className="toTitleCase"><i className="bi bi-currency-rupee"></i>{text}</span>,
     },
     {
       title: 'Action',

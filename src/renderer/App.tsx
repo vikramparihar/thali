@@ -9,6 +9,8 @@ import Order from './components/order';
 import Invoice from './components/invoice';
 import Setting from './components/setting';
 import Recipe from './components/recipe';
+import Customer from './components/customer';
+import Calendar from './components/calendar';
 
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
           <Route path="invoice" element={<Invoice />}/>
           <Route path="recipe" element={<Recipe />}/>
           <Route path="setting" element={<Setting />}/>
+          <Route path="customer" element={<Customer />}/>
+          <Route path="calendar" element={<Calendar />}/>
         
         </Route>
       </Routes>

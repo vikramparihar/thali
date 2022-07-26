@@ -174,6 +174,11 @@ function initDatabaseApi() {
     return await Database.removeRecipe(args);
   });
 
+  ipcMain.handle('seed-recipe', async (event, args) => {
+    return await Database.seedRecipe(args);
+  });
+  
+
   /* Order apis call */
   ipcMain.handle('save-order', async (event, args) => {
     return await Database.saveOrder(args);

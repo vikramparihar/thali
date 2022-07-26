@@ -87,14 +87,14 @@ export default function order() {
       title: 'Customer',
       dataIndex: 'customerName',
       key: 'customerName',
-      render: (text) => <span>{text ? text : 'N/A'}</span>,
+      render: (text) => <span className="toTitleCase" >{text ? text : 'N/A'}</span>,
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
       // defaultSortOrder: 'descend',
-      render: (_, record) => <span>{tdPrice(record)}</span>,
+      render: (_, record) => <span><i className="bi bi-currency-rupee"></i>{tdPrice(record)}</span>,
     },
     {
       title: 'Date',

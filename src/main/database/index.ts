@@ -56,6 +56,11 @@ class Database {
     return await RecipeController.removeRecipe(args);
   }
 
+  async seedRecipe(args: any) {
+    return await RecipeController.seedData(args);
+  }
+  
+
   // Order apis call
   async saveOrder(args: any) {
     return await OrderController.saveOrder(args);

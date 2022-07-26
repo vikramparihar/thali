@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
 @import 'material-icons/iconfont/material-icons.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 body {
   font-family: 'Roboto' !important;
 }
@@ -22,4 +23,11 @@ body {
 .card-table .ant-card-body {
   /* padding-top: 0px !important; */
   /* padding-bottom: 0px !important; */
+}
+.site-page-header {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.card-no-padding .ant-card-body {
+  padding: 0px;
 }
